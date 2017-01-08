@@ -21,8 +21,6 @@
 
         var $containerChildren = $('#' + settings.containerId + containerChildrenTag);
 
-        console.log(selectsClass)
-
         $selects
             .not(':eq(0)')
             .prop('disabled', true);

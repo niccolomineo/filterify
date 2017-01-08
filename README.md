@@ -1,11 +1,14 @@
-jQuery/Bootstrap data filtering and instant search.
+jQuery/Bootstrap data filtering, instant search and display.
 
 # Instructions
-
 ### Basic usage
-Pass a class to apply the crossfiltering functionality to the `select` elements.
+Use the `rel` attribute in the html page to design a unique relationship between each select, the search field, the container and its elements where content will be displayed.
+
+Pass a class to the jQuery object to initialize the plugin:
 
     $('.filters-select').filterify()
+
+
 
 ### Custom settings
 Pass custom settings to the `filterify` method.
