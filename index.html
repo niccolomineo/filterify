@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="css/main.css" rel="stylesheet">
+        <script src="js/main.js"></script>
+    </head>
+    <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>Filterify Demo</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-3 form-group">
+                    <select class="filters-select form-control">
+                        <option selected disabled>Scegli la macrocategoria</option>
+                        <option rel="metabolici">Profili Metabolici</option>
+                        <option rel="organo">Profili D'Organo</option>
+                        <option rel="clinica">Chimica Clinica</option>
+                        <option rel="endocrinologia">Endocrinologia e Profili Ormonali</option>
+                        <option rel="faseacuta">Proteine Fase Acuta-Monitoraggio Farmaci</option>
+                        <option rel="ematologia">Ematologia</option>
+                        <option rel="coagulazione">Coagulazione</option>
+                        <option rel="immunologia">Immunologia</option>
+                        <option rel="sierologia">Sierologia</option>
+                        <option rel="allergie">Allergie</option>
+                        <option rel="istologia">Istologia e Citopatologia</option>
+                        <option rel="micologia">Micologia e Microbiologia</option>
+                        <option rel="urine">Urine e Feci</option>
+                        <option rel="pcr">PCR</option>
+                    </select>
+                </div>
+                <div class="col-md-3 form-group">
+                    <select class="filters-select form-control">
+                        <option selected disabled>Scegli la microcategoria</option>
+                        <option rel="metabolici canini">Profili Metabolici Canini</option>
+                        <option rel="metabolici felini">Profili Metabolici Felini</option>
+                        <option rel="metabolici equini">Profili Metabolici Equini</option>
+                        <option rel="metabolici esotici">Esami Animali Esotici</option>
+                        <option rel="metabolici coniglio">Esami Coniglio / Furetto</option>
+                        <option rel="metabolici cincilla">Esami Cincillà / Cavie / Roditori</option>
+                        <option rel="endocrinologia">Endocrinologia</option>
+                        <option rel="endocrinologia">Profili Ormonali</option>
+                        <option rel="faseacuta">Proteine di Fase Acuta</option>
+                        <option rel="faseacuta">Monitoraggio Farmaci</option>
+                        <option rel="coagulazione">Coagulazione</option>
+                        <option rel="coagulazione">Profili Coagulativi</option>
+                        <option rel="sierologia">Sierologia IFA/Elisa</option>
+                        <option rel="allergie">Allergie</option>
+                        <option rel="allergie">Iposensibilizzazione</option>
+                        <option rel="istologia">Citopatologia</option>
+                        <option rel="istologia">Istopatologia</option>
+                        <option rel="micologia">Microbiologia</option>
+                        <option rel="micologia">Micologia</option>
+                        <option rel="urine">Ricerca nelle Urine</option>
+                        <option rel="urine">Esami Coprologici</option>
+                    </select>
+                </div>
+                <div class="col-md-3 form-group">
+                    <select class="filters-select form-control">
+                        <option selected disabled>Scegli il profilo</option>
+                        <option rel="metabolici canini generici">Profili Metabolici Generici Canini</option>
+                        <option rel="metabolici canini prechirurgici">Profili Prechirurgici</option>
+                        <option rel="metabolici canini sierologici">Profili Sierologici Canini</option>
+                        <option rel="metabolici felini generici">Profili Metabolici Generici Felini</option>
+                        <option rel="metabolici felini prechirurgici">Profili Prechirurgici</option>
+                        <option rel="metabolici felini sierologici">Profili Sierologici Felini</option>
+                    </select>
+                </div>
+                <div class="col-md-3 form-group">
+                    <input type="text" id="filters-search" class="form-control" placeholder="Ricerca per nome">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" id="filters-view">
+                <div rel="metabolici canini generici">
+                    <h2>prova</h2>
+                    lorem ipsum ahaha
+                </div>
+                <div rel="metabolici felini generici">
+                    <h2>metabolici generici felini :)</h2>
+                    lorem ipsum ahaha
+                </div>
+                <div rel="metabolici felini generici">
+                    <h2>metabolici generici felini 2 :)</h2>
+                    lorem ipsum ahaha
+                </div>
+                <div rel="metabolici canini sierologici">
+                    <h2>metabolici sierologici canini :)</h2>
+                    lorem ipsum ahaha
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+    <script>
+        $('.filters-select').filterify();
+    </script>
+    </body>
+</html>
