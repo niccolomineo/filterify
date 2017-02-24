@@ -1,3 +1,28 @@
 .filters-select:disabled {
     opacity: 0.3;
 }
+
+.filter:not(:last-child) {
+    border-right: 2px solid white;
+}
+
+.filter {
+    background-color: #dcdcdc;
+    padding: 45px 20px;
+}
+
+#filters-search {
+    background: white url('../images/icon_search.png') no-repeat 10px center;
+    border-radius: 5px;
+    outline: 0;
+    font-weight: 400;
+    border: 1px solid #ccc;
+    padding-left: 35px;
+}
+
+.bootstrap-select>.dropdown-toggle.bs-placeholder,
+.bootstrap-select>.dropdown-toggle.bs-placeholder:active,
+.bootstrap-select>.dropdown-toggle.bs-placeholder:focus,
+.bootstrap-select>.dropdown-toggle.bs-placeholder:hover {
+    color: #333;
+}

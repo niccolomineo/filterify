@@ -3,11 +3,10 @@
     <head>
         <meta charset="utf-8">
         <title>Filterify Demo</title>
-        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
         <link href="css/main.css" rel="stylesheet">
-        <script src="js/main.js"></script>
     </head>
     <body>
     <div class="container">
@@ -17,92 +16,790 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
-                <div class="col-md-3 form-group">
-                    <select class="filters-select form-control">
-                        <option selected disabled>Scegli la macrocategoria</option>
-                        <option rel="metabolici">Profili Metabolici</option>
-                        <option rel="organo">Profili D'Organo</option>
-                        <option rel="clinica">Chimica Clinica</option>
-                        <option rel="endocrinologia">Endocrinologia e Profili Ormonali</option>
-                        <option rel="faseacuta">Proteine Fase Acuta-Monitoraggio Farmaci</option>
-                        <option rel="ematologia">Ematologia</option>
-                        <option rel="coagulazione">Coagulazione</option>
-                        <option rel="immunologia">Immunologia</option>
-                        <option rel="sierologia">Sierologia</option>
-                        <option rel="allergie">Allergie</option>
-                        <option rel="istologia">Istologia e Citopatologia</option>
-                        <option rel="micologia">Micologia e Microbiologia</option>
-                        <option rel="urine">Urine e Feci</option>
-                        <option rel="pcr">PCR</option>
+            <div class="col-md-offset-1 col-md-10">
+                <div class="col-md-3 filter">
+                    <select class="filters-select form-control selectpicker">
+                        <option selected disabled>Macrocategoria</option>
+                        <option data-tokens="metabolici">Profili Metabolici</option>
+                        <option data-tokens="clinica">Chimica Clinica</option>
+                        <option data-tokens="ematologia">Ematologia</option>
                     </select>
                 </div>
-                <div class="col-md-3 form-group">
-                    <select class="filters-select form-control">
-                        <option selected disabled>Scegli la microcategoria</option>
-                        <option rel="metabolici canini">Profili Metabolici Canini</option>
-                        <option rel="metabolici felini">Profili Metabolici Felini</option>
-                        <option rel="metabolici equini">Profili Metabolici Equini</option>
-                        <option rel="metabolici esotici">Esami Animali Esotici</option>
-                        <option rel="metabolici coniglio">Esami Coniglio / Furetto</option>
-                        <option rel="metabolici cincilla">Esami Cincillà / Cavie / Roditori</option>
-                        <option rel="endocrinologia">Endocrinologia</option>
-                        <option rel="endocrinologia">Profili Ormonali</option>
-                        <option rel="faseacuta">Proteine di Fase Acuta</option>
-                        <option rel="faseacuta">Monitoraggio Farmaci</option>
-                        <option rel="coagulazione">Coagulazione</option>
-                        <option rel="coagulazione">Profili Coagulativi</option>
-                        <option rel="sierologia">Sierologia IFA/Elisa</option>
-                        <option rel="allergie">Allergie</option>
-                        <option rel="allergie">Iposensibilizzazione</option>
-                        <option rel="istologia">Citopatologia</option>
-                        <option rel="istologia">Istopatologia</option>
-                        <option rel="micologia">Microbiologia</option>
-                        <option rel="micologia">Micologia</option>
-                        <option rel="urine">Ricerca nelle Urine</option>
-                        <option rel="urine">Esami Coprologici</option>
+                <div class="col-md-3 filter">
+                    <select class="filters-select form-control selectpicker">
+                        <option selected disabled>Microcategoria</option>
+                        <option data-tokens="metabolici canini">Profili Metabolici Canini</option>
+                        <option data-tokens="metabolici felini">Profili Metabolici Felini</option>
+                        <option data-tokens="clinica enzimi">Enzimi</option>
+                        <option data-tokens="clinica substrati">Substrati</option>
                     </select>
                 </div>
-                <div class="col-md-3 form-group">
-                    <select class="filters-select form-control">
-                        <option selected disabled>Scegli il profilo</option>
-                        <option rel="metabolici canini generici">Profili Metabolici Generici Canini</option>
-                        <option rel="metabolici canini prechirurgici">Profili Prechirurgici</option>
-                        <option rel="metabolici canini sierologici">Profili Sierologici Canini</option>
-                        <option rel="metabolici felini generici">Profili Metabolici Generici Felini</option>
-                        <option rel="metabolici felini prechirurgici">Profili Prechirurgici</option>
-                        <option rel="metabolici felini sierologici">Profili Sierologici Felini</option>
+                <div class="col-md-3 filter">
+                    <select class="filters-select form-control selectpicker">
+                        <option selected disabled>Profilo</option>
+                        <option data-tokens="metabolici canini generici">Profili Metabolici Generici Canini</option>
+                        <option data-tokens="metabolici canini prechirurgici">Profili Prechirurgici</option>
+                        <option data-tokens="metabolici canini sierologici">Profili Sierologici Canini</option>
                     </select>
                 </div>
-                <div class="col-md-3 form-group">
-                    <input type="text" id="filters-search" class="form-control" placeholder="Ricerca per nome">
+                <div class="col-md-3 filter">
+                    <input type="search" id="filters-search" class="form-control" placeholder="Ricerca per nome">
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12" id="filters-view">
-                <div rel="metabolici canini generici">
-                    <h2>prova</h2>
-                    lorem ipsum ahaha
+            <div class="col-md-offset-2 col-md-8 padding-top-more" id="filters-view">
+                <div data-tokens="metabolici canini generici">
+                    <h2 class="margin-top-more margin-bottom">Profili Metabolici Generici Canini</h2>
+                    <h4 class="margin-bottom-more no-margin-top">Profili Metabolici</h4>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">a0 - metabolico appialab 0</h3>
+                            <p>Emogramma - pt - elettroforesi</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA + striscio ematico + siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">a1 - metabolico appialab 1</h3>
+                            <p>Emogramma - biochimico</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA + striscio ematico + siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">a3 - metabolico appialab 3</h3>
+                            <p>Emogramma - biochimico - elettroforesi - urine completo - pu/cu
+                                (A2 + urine + pu/cu)</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA + striscio
+                                ematico + siero + urine</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">a4 - metabolico appialab 4</h3>
+                            <p>Emogramma - biochimico - elettroforesi TP - aPTT - fibrinogeno
+                                (A2 + TP + aPTT + fibrinogeno)</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA + striscio
+                                ematico + siero + plasma da sodio
+                                citrato</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">a5 - metabolico appialab 5</h3>
+                            <p>Emogramma - biochimico - elettroforesi - urine completo
+                                rapporto pu/cu- rapporto cortisolo/creatinina urinari
+                                (A3 + rapporto cortisolo/creatinina urinari)</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA + striscio
+                                ematico + siero + urine (10ml)</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">p5 - profilo 5 parametri</h3>
+                            <p>Azotemia - creatinina - glicemia - pt- elettroforesi</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">p7 - profilo 7 parametri</h3>
+                            <p>Azotemia - creatinina - AST - ALT - ALP - pt - elettroforesi</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">p8 - profilo 8 parametri</h3>
+                            <p>Emogramma - azotemia - creatinina - AST - ALT - ALP - pt - elettroforesi</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA
+                                + striscio ematico + siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">p10 - profilo elettrolitico</h3>
+                            <p>sodio, potassio, cloro, fosforo, calcio, magnesio, glicemia, azotemia,
+                                creatinina, proteine totali</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">p15 - profilo 15 parametri</h3>
+                            <p>Azotemia - creatinina - glicemia - AST - ALT - ALP - calcio - fosforo
+                                proteine totali - sodio - potassio - amilasi - bilirubina totale - γ GT -
+                                cloro</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">p30 - profilo biochimico esteso</h3>
+                            <p>AST (GOT) - ALT (GPT) - ALP - γ GT - BILIRUBINA TOTALE - BILIRUBINA DIRETTA
+                                COLINESTERASI - UREA - CREATININA - GLUCOSIO - CALCIO - FOSFORO - MAGNESIO
+                                SODIO - POTASSIO - RAPPORTO Na/K - CLORO - BICARBONATI - DIVARIO ANIONICO
+                                OSMOLALITA’ SIERICA CALCOLATA - FERRO - UIbc - TIBC - %SATURAZIONE - CPK
+                                LHD - PROTEINE TOTALI - ALBUMINE - GLOBUMINE - RAPPORTO A/G - COLESTEROLO
+                                TRIGLICERIDI - AMILASI - LIPASI</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">ps - profilo sideremico</h3>
+                            <p>Ferro, UIBC, TIBC, % SATURAZIONE)</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
                 </div>
-                <div rel="metabolici felini generici">
-                    <h2>metabolici generici felini :)</h2>
-                    lorem ipsum ahaha
+                <div data-tokens="metabolici canini prechirurgici">
+                    <h2 class="margin-top-more margin-bottom">Profili Prechirurgici Canini</h2>
+                    <h4 class="margin-bottom-more no-margin-top">Profili Metabolici</h4>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">ch 1 - profilo prechirurgico 1</h3>
+                            <p>Emogramma - azotemia - creatinina - ALP - ALT - albumina - globuline
+                                rapporto A/G - proteine totali</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA
+                                + striscio ematico + siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">ch 2 - profilo prechirurgico 2</h3>
+                            <p>Emogramma - azotemia - creatinina - ALP - ALT - albumina - globuline
+                                rapporto A/G - proteine totali - calcio - sodio - potassio - cloro
+                                (CH1 + calcio, sodio, potassio, cloro)</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA
+                                + striscio ematico + siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">ch 3 - profilo prechirurgico 3</h3>
+                            <p>Emogramma - azotemia - creatinina - glicemia - ALT - pt - elettroforesi
+                                TP - aPTT - fibrinogeno</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA
+                                + striscio ematico + siero
+                                + plasma da sodio citrato</p>
+                        </div>
+                    </div>
                 </div>
-                <div rel="metabolici felini generici">
-                    <h2>metabolici generici felini 2 :)</h2>
-                    lorem ipsum ahaha
+                <div data-tokens="metabolici canini sierologici">
+                    <h2 class="margin-top-more margin-bottom">Profili Sierologici Canini</h2>
+                    <h4 class="margin-bottom-more no-margin-top">Profili Metabolici</h4>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">si 1 - profilo sierologico 1</h3>
+                            <p>Leishmania (IFA) IgG - ehrlichia canis (IFA) IgG o IgM - rickettsia
+                                rickettsii (IFA) IgG o IgM</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">si 2 - profilo sierologico 2</h3>
+                            <p>cimurro (IFA) IgG e IgM</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">si 3 - profilo sierologico 3</h3>
+                            <p>Toxoplasma (IFA) IgG e IgM - Neospora caninum (IFA) IgG e IgM</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">si 4 - profilo sierologico 4</h3>
+                            <p>4 determinazioni a scelta (IFA) IgG o IgM</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">k1</h3>
+                            <p>Pt - elettroforesi - leishmania (IFA) IgG</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">k2</h3>
+                            <p>Pt - elettroforesi - leishmania (IFA) IgG - emogramma
+                                (K1 + emogramma)</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero + sangue intero da K3EDTA
+                                + striscio ematico</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">k3</h3>
+                            <p>Pt - elettroforesi - leishmania (IFA) IgG - urine
+                                pu/cu - azotemia - creatinina
+                                (K1 + urine+ pu/cu + azotemia + creatinina)</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero + urine</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">k3</h3>
+                            <p>Pt - elettroforesi - leishmania (IFA) IgG - urine
+                                pu/cu - azotemia - creatinina
+                                (K1 + urine+ pu/cu + azotemia + creatinina)</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero + urine</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">k4</h3>
+                            <p>Pt - elettroforesi - leishmania (IFA) IgG - urine - pu/cu - azotemia
+                                creatinina - emogramma
+                                (K3 + emogramma )</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero + sangue intero da K3EDTA
+                                + striscio ematico + urine</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">k5</h3>
+                            <p>Leishmania IgG - Dirofilaria immitis</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">k6</h3>
+                            <p>Pt - elettroforesi - leishmania (IFA) IgG + azotemia + creatinina
+                                (K1 + azotemia + creatinina)</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">k7</h3>
+                            <p>Leishmania (PCR) - Ricerca leishmania citologica (midollare o
+                                linfonodale) - leishmania (IFA) IgG</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>succo midollare in K3EDTA
+                                (almeno 200 microlitri) o sangue
+                                intero da K3EDTA (almeno 200
+                                microlitri) + puntato linfonodale
+                                o midollare + siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">l1</h3>
+                            <p>Emogramma - azotemia - creatinina - AST - ALT - ALP - pt - elettroforesi
+                                leishmania(IFA) IgG, o ehrlichia canis (IFA)IgG o IgM, o rickettsia
+                                rickettsii (IFA) IgG o IgM
+                                (P8 + leishmania(IFA) IgG, o ehrlichia canis (IFA) IgG o IgM, o rickettsia
+                                rickettsii (IFA) IgG o IgM)</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA
+                                + striscio ematico + siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">l2</h3>
+                            <p>Emogramma - biochimico - elettroforesi - leishmania (IFA) IgG, o
+                                ehrlichia canis (IFA) IgG o IgM, o rickettsia rickettsii (IFA) IgG o IgM
+                                (A2 + leishmania(IFA) IgG, o ehrlichia canis (IFA) IgG o IgM, o rickettsia
+                                rickettsii (IFA) IgG o IgM)</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA
+                                + striscio ematico + siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">l3</h3>
+                            <p>Emogramma - azotemia - creatinina - AST - ALT - ALP - pt - elettroforesi
+                                leishmania (IFA) IgG o ehrlichia canis (IFA) IgG o IgM, o rickettsia
+                                rickettsii (IFA) IgG o IgM - urine - pu/cu
+                                (L1 + urine + pu/cu)</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA
+                                + striscio ematico + siero + urine</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">l4</h3>
+                            <p>Emogramma - azotemia - creatinina - AST - ALT - ALP - pt - elettroforesi
+                                leishmania (IFA) IgG - ehrlichia canis (IFA) IgG o IgM - rickettsia
+                                rickettsii (IFA) IgG o IgM
+                                (P8 + leishmania(IFA) IgG + ehrlichia canis (IFA) IgG o IgM + rickettsia
+                                rickettsii (IFA) IgG o IgM)</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA + striscio
+                                ematico + siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">l5</h3>
+                            <p>emogramma - azotemia - creatinina - AST - ALT - ALP - pt - elettroforesi
+                                leishmania (IFA) IgG o ehrlichia canis (IFA) IgG o IgM, o rickettsia
+                                rickettsii (IFA) IgG o IgM - Ft4 - Tsh
+                                (L1 + Ft4 + Tsh)</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA
+                                + striscio ematico + siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">l6</h3>
+                            <p>Emogramma - biochimico - leishmania (IFA) IgG - ehrlichia canis (IFA) IgG
+                                o IgM - rickettsia rickettsii (IFA) IgG o IgM
+                                (A1 + leishmania(IFA) IgG + ehrlichia canis (IFA) IgG o IgM + rickettsia
+                                rickettsii (IFA) IgG o IgM)</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA
+                                + striscio ematico + siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">l7</h3>
+                            <p>Emogramma - biochimico - elettroforesi - leishmania(IFA) IgG ehrlichia
+                                canis (IFA) IgG o IgM - rickettsia rickettsii (IFA) IgG o gM
+                                (A2 + leishmania(IFA) IgG + ehrlichia canis (IFA) IgG o IgM + rickettsia
+                                rickettsii (IFA) IgG o IgM)</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA
+                                + striscio ematico + siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">l8</h3>
+                            <p>Emogramma - biochimico - elettroforesi - Dirofilaria immitis (ELISA)
+                                (A2 + Dirofilaria immitis ELISA)</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA
+                                + striscio ematico + siero</p>
+                        </div>
+                    </div>
                 </div>
-                <div rel="metabolici canini sierologici">
-                    <h2>metabolici sierologici canini :)</h2>
-                    lorem ipsum ahaha
+                <div data-tokens="clinica enzimi">
+                    <h2 class="margin-top-more margin-bottom">Enzimi</h2>
+                    <h4 class="margin-bottom-more no-margin-top">Chimica Clinica</h4>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">α - amilasi</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">alt (gpt)</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">alp (pa)</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">ast (got)</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">colinesterasi</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">ck</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">γ - gt</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">ldh</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">lipasi</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                </div>
+                <div data-tokens="clinica substrati">
+                    <h2 class="margin-top-more margin-bottom">Substrati</h2>
+                    <h4 class="margin-bottom-more no-margin-top">Chimica Clinica</h4>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">acidi biliari sierici preprandiali</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">acidi biliari sierici postprandiali</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">acidi biliari sierici pre + post</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">acido urico</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">albumina</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">bilirubina totale</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">bilirubina diretta</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">colesterolo</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">creatinina</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">fruttosamina</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">glucosio</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">lattato</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">lipidi totali</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">proteine totali</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">trigliceridi</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">urea</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>siero</p>
+                        </div>
+                    </div>
+                </div>
+                <div data-tokens="ematologia">
+                    <h2 class="margin-top-more margin-bottom">Ematologia</h2>
+
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">Emogramma</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA + striscio ematico</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">RETICOLOCITI</h3>
+                            <p>conta strumentale e manuale (%, μL, CRP,IR)</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">PROFILO RETICOLOCITARIO COMPLETO cane</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">FORMULA LEUCOCITARIA - WBC totali</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA + striscio ematico</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">RICERCA EMOPARASSITI</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA + striscio ematico</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">CITOLOGIA EMATICA</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA + striscio ematico</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">BUFFY COAT</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">RICERCA MICROFILARIE </h3>
+                            <p>(tecnica di Knott modificata)</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">EMOGRAMMA RETTILI</h3>
+                            <p>RBC, Hb, PCV, MCV, MCH, MCHC, PLT, WBC, formula leucocitaria, lettura dello striscio al microscopio, ricerca emoparassiti</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da litio eparina + striscio ematico</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">EMOGRAMMA VOLATILI</h3>
+                            <p>RBC, Hb, PCV, MCV, MCH, MCHC, PLT, WBC, formula leucocitaria, lettura dello striscio al microscopio, ricerca emoparassiti</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da litio eparina + striscio ematico</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">EMOGRAMMA RODITORI</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA + striscio ematico</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">COMPATIBILITA’ CROCIATA</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA (donatore e ricevente) + siero (donatore e ricevente)</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">GRUPPO SANGUIGNO CANE DEA 1:1</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA</p>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-md-6">
+                            <h3 class="orange-text no-margin-top">GRUPPO SANGUIGNO GATTO A, B, AB</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p>sangue intero da K3EDTA</p>
+                        </div>
+                    </div>
+                    <div class="margin-top">
+                        <h3>Note:</h3>
+                        <p>Il conteggio dei reticolociti viene effettuato in maniera automatica e manuale</p>
+                        <p>Per HCT< 35% nel cane e < 25% nel gatto</p>
+                        <p>Le conte eritrocitarie, leucocitarie e trombocitarie di rettili e volatili vengono eseguite manualmente</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
     <script src="js/main.js"></script>
     <script>
-        $('.filters-select').filterify();
+
+        $(document).ready(function () {
+
+
+            $('.filters-select').filterify({'searchedElements': 'h3'});
+
+        });
     </script>
     </body>
 </html>
