@@ -20,7 +20,7 @@ The currently implemented settings are:
 | *containerId*      | filters-container   | Container element's id for the tagged content wrappers      |
 | *searchInputId*    | filters-search      | Search input box' id                                        |
 | *searchedElements* | h2                  | Elements you want the search engine to act on and display   |
-| *searchedElements* | .row                | Default parent selector for the above element's parent      |
+| *searchedElementsParent* | .row                | Default parent selector for the above element's parent      |
 | *parentElementBgColor* | #8E201F         | Each select's container's background color                  |
 
 Final result example:
